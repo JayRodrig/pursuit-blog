@@ -34,3 +34,4 @@ ___
 > * Layed down base route functions for the user model. Both **_public_** and **_private_**.
 > * Layed down base code for the `UserServices.js`.
 > * Came to mind that when retrieving user info, such thing as **_password_** and **_email_** should be **_hidden_**. **KEEP IN MIND**.
+
