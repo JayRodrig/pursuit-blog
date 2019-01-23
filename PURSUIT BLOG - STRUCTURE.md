@@ -35,3 +35,10 @@ ___
 > * Layed down base code for the `UserServices.js`.
 > * Came to mind that when retrieving user info, such thing as **_password_** and **_email_** should be **_hidden_**. **KEEP IN MIND**.
 
+### 01/23/2019, 12:30 AM - 01/23/2019, 1:39 AM
+
+> * Fixed the bug when retrieving user info. API hides _**pasword**_ and _**email**_ now. 
+> * Created routes and `UserService` function for _get posts_ and _get post_ routes. 
+> * Almost done with the public user routes at this point. Only routes missing are the comments routes and in order to test them, will need to insert some comments since database has none. 
+> * Will go on with the same approach, building public routes and functions for all models before creating **AUTH** and login, so then I become able to work on the private routes and functions.
+
