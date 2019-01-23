@@ -51,9 +51,18 @@ PublicUserRouter.get('/:user_id/posts', (request, response) => {
 });
 
 PublicUserRouter.get('/:user_id/posts/:post_id', (request, response) => {
-    response.json({
-        'msg': `Successfully initialized your router.`
-    });
+    const {user_id, post_id} = request.params;
+    UserServices.readPost(user_id, post_id)
+        .then(data => {
+            response.json(data);
+            console.log(`msg: Successfully retrieved user's post.`);
+        })
+        .catch(err => {
+            console.log(err);
+            response.json({
+                'msg': `Something went wrong.`,
+            });
+        });
 });
 
 PublicUserRouter.get('/:user_id/comments', (request, response) => {
