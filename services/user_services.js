@@ -21,7 +21,7 @@ UserServices.readComments = (user_id) => db.any(
     'SELECT users.username, comments.title, comments.body FROM users JOIN comments ON ${user_id} = author WHERE ${user_id} = author', {user_id,}
 );
 
-UserServices.readComment = (user_id, comment_id) => db.any(
+UserServices.readComment = (user_id, comment_id) => db.one(
     'SELECT users.username, comments.title, comments.body FROM users JOIN comments ON users.id = comments.author WHERE author = ${user_id} AND comments.id = ${comment_id}', {user_id, comment_id,}
 );
 
