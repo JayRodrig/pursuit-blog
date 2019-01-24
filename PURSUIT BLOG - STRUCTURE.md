@@ -42,5 +42,11 @@ ___
 > * Almost done with the public user routes at this point. Only routes missing are the comments routes and in order to test them, will need to insert some comments since database has none. 
 > * Will go on with the same approach, building public routes and functions for all models before creating **AUTH** and login, so then I become able to work on the private routes and functions.
 
-### 01/24/2019, 11:36 AM - 01/24/2019, 
+### 01/24/2019, 11:36 AM - 01/24/2019, 12:24 PM
+
+> * Created `public_post.js` and `post_services.js`.
+> * Implemented public post route functions and created post services functions.
+>   * _Had to stop to take Tony to work, will return back to work shortly_
+
+
 
