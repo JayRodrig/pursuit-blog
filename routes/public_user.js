@@ -10,7 +10,6 @@ PublicUserRouter.post('/', (request, response) => {
             });
         })
         .catch(err => {
-            console.log(err);
             response.json({
                 'msg': `Something went wrong`,
             });
@@ -28,7 +27,6 @@ PublicUserRouter.get('/:user_id', (request, response) => {
             });
             console.log(`msg: Successfully retrieved user data.`);
         }, err => {
-            console.log(err);
             response.json({
                 'msg': `Something went wrong.`,
             });
@@ -43,7 +41,6 @@ PublicUserRouter.get('/:user_id/posts', (request, response) => {
             console.log(`msg: Successfully retrieved user's posts.`);
         })
         .catch(err => {
-            console.log(err);
             response.json({
                 'msg': `Something went wrong.`
             });
@@ -58,7 +55,6 @@ PublicUserRouter.get('/:user_id/posts/:post_id', (request, response) => {
             console.log(`msg: Successfully retrieved user's post.`);
         })
         .catch(err => {
-            console.log(err);
             response.json({
                 'msg': `Something went wrong.`,
             });
@@ -66,15 +62,29 @@ PublicUserRouter.get('/:user_id/posts/:post_id', (request, response) => {
 });
 
 PublicUserRouter.get('/:user_id/comments', (request, response) => {
-    response.json({
-        'msg': `Successfully initialized your router.`
-    });
+    const {user_id} = request.params;
+    UserServices.readComments(user_id)
+        .then(data => {
+            response.json(data);
+        })
+        .catch(err => {
+            response.json({
+                'msg': `Successfully retrieved user's comments.`,
+            });
+        });
 });
 
 PublicUserRouter.get('/:user_id/comments/:comment_id', (request, response) => {
-    response.json({
-        'msg': `Successfully initialized your router.`
-    });
+    const {user_id, comment_id} = request.params;
+    UserServices.readComment(user_id, comment_id)
+        .then(data => {
+            response.json(data);
+        })
+        .catch(err => {
+            response.json({
+                'msg': `Something went wrong.`
+            })
+        })
 });
 
 PublicUserRouter.post('/login', (request, response) => {

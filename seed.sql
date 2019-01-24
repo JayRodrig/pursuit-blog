@@ -8,7 +8,7 @@ CREATE TABLE users (
   username VARCHAR (100) UNIQUE NOT NULL,
   email VARCHAR (100) UNIQUE NOT NULL,
   password VARCHAR (250) NOT NULL,
-  token VARCHAR (16)
+  token VARCHAR
 );
 
 CREATE TABLE posts (
