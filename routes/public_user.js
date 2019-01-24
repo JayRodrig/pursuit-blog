@@ -1,17 +1,23 @@
 const PublicUserRouter = require('express').Router();
 const UserServices = require('../services/user_services');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 PublicUserRouter.post('/', (request, response) => {
     const {username, email, password} = request.body;
-    UserServices.create(username, email, password)
+    bcrypt.hash(password, saltRounds)
+        .then(hash => {
+            return UserServices.create(username, email, hash)
+        })
         .then(() => {
             response.json({
-                'msg': `Successfully created user.`
+                'msg': `Successfully created user.`,
             });
         })
         .catch(err => {
+            console.log(err);
             response.json({
-                'msg': `Something went wrong`,
+                'msg': `Something went wrong.`,
             });
         });
 });

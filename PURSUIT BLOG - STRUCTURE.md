@@ -20,7 +20,7 @@ ___
 * Express: application server.
 * PostgreSQL: database of the application
 * Body Parser: module to allow the server to interact with `request.body`
-* PGP: module to allow the server manipulate the database
+* PG-Promise: module to allow the server manipulate the database
 * Swagger: module to auto-generate docs for the api
 
 ___
