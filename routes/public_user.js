@@ -102,8 +102,8 @@ PublicUserRouter.post('/login', (request, response) => {
         .then(data => {
             return bcrypt.compare(password, data.password)
         })
-        .then(response => {
-            if (!response){
+        .then(passwordMatch => {
+            if (!passwordMatch){
                 response.json({
                     'msg': `Invalid Username or Password. Please try again.`,
                 });
