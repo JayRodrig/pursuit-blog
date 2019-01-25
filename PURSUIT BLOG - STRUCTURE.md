@@ -48,5 +48,10 @@ ___
 > * Implemented public post route functions and created post services functions.
 >   * _Had to stop to take Tony to work, will return back to work shortly_
 
-### 01/24/2019, 3:44 PM - 
+### 01/24/2019, 3:44 PM - 01/24/2019, 8:36 PM
+
+> * Implemented all the private routes for the user model. 
+> * Implemented the functions needed to make the functionality of the private paths work.
+
+
 
