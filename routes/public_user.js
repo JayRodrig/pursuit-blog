@@ -1,11 +1,13 @@
+// ----- DEPENDENCIES
 const PublicUserRouter = require('express').Router();
 const UserServices = require('../services/user_services');
 const bcrypt = require('bcrypt');
-const saltRounds = 10;
+const uuid = require('uuid/v1');
 
+// ----- EXPRESS ROUTE CALLBACKS
 PublicUserRouter.post('/', (request, response) => {
     const {username, email, password} = request.body;
-    bcrypt.hash(password, saltRounds)
+    bcrypt.hash(password, 10)
         .then(hash => {
             return UserServices.create(username, email, hash)
         })
@@ -94,9 +96,31 @@ PublicUserRouter.get('/:user_id/comments/:comment_id', (request, response) => {
 });
 
 PublicUserRouter.post('/login', (request, response) => {
-    response.json({
-        'msg': `Successfully initialized your router.`
-    });
+    const {username, password} = request.body;
+    const token = uuid();
+    UserServices.login(username)
+        .then(data => {
+            return bcrypt.compare(password, data.password)
+        })
+        .then(response => {
+            if (!response){
+                response.json({
+                    'msg': `Invalid Username or Password. Please try again.`,
+                });
+            }
+            return UserServices.insertToken(token, username)
+        })
+        .then(() => {
+            response.json({
+                'msg': `You've successfully logged in.`,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            response.json({
+                'msg': `Something went wrong.`
+            });
+        });
 });
 
 module.exports = PublicUserRouter;

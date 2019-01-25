@@ -5,6 +5,10 @@ UserServices.create = (username, email, password) => db.none(
     'INSERT INTO users (username, email, password) VALUES (${username}, ${email}, ${password})', {username, email, password,}
 );
 
+UserServices.login = (username) => db.one(
+    'SELECT username, password FROM users WHERE username = ${username}', {username,}
+);
+
 UserServices.readUser = (user_id) => db.one(
     'SELECT * FROM users WHERE id = ${user_id}', {user_id,}
 );
@@ -23,6 +27,10 @@ UserServices.readComments = (user_id) => db.any(
 
 UserServices.readComment = (user_id, comment_id) => db.one(
     'SELECT users.username, comments.title, comments.body FROM users JOIN comments ON users.id = comments.author WHERE author = ${user_id} AND comments.id = ${comment_id}', {user_id, comment_id,}
+);
+
+UserServices.insertToken = (token, username) => db.none(
+    'UPDATE users SET token = ${token} WHERE username = ${username}', {token, username,}
 );
 
 module.exports = UserServices;
