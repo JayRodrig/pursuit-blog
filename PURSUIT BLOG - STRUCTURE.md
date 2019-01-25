@@ -53,5 +53,11 @@ ___
 > * Implemented all the private routes for the user model. 
 > * Implemented the functions needed to make the functionality of the private paths work.
 
+### 01/25/2019, 11:25 AM - 01/25/2019, 12:16 PM
+
+> * Created `private_post.js` and implemented all route functions for the private posts paths.
+> * Added to the `post_services.js` all the functions necessary to give the functionality needed to the private post paths,
+>   * Only thing left to do is the same, but for the comments model and verify the whole project for uniformity and maybe improvements.
+
 
 
