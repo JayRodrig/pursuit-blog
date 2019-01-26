@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const PublicUserRouter = require('./routes/public_user');
 const PublicPostRouter = require('./routes/public_post');
 const PublicCommentRouter = require('./routes/public_comment');
+const PrivateCommentRouter = require('./routes/private_comment');
 const PrivateUserRouter = require('./routes/private_user');
 const PrivatePostRouter = require('./routes/private_post');
 
@@ -20,6 +21,7 @@ app.use('/user', PrivateUserRouter);
 app.use('/post', PublicPostRouter);
 app.use('/post', PrivatePostRouter);
 app.use('/comment', PublicCommentRouter);
+app.use('/comment', PrivateCommentRouter);
 
 // ----- RUNNING SERVER FUNCTION
 app.listen(port, () => {
