@@ -59,4 +59,11 @@ ___
 > * Added to the `post_services.js` all the functions necessary to give the functionality needed to the private post paths,
 >   * Only thing left to do is the same, but for the comments model and verify the whole project for uniformity and maybe improvements.
 
-### 01/25/2019, 6: 40 PM – 01/25/2019, 
+### 01/25/2019, 6:40 PM – 01/25/2019, 7:40 PM
+
+> * Created `private_comment.js`and implemented all route functions for the private comments paths
+> * Added to the `comments_services.js` all the functions necessary to give the functionality needed to the private comments paths.
+> * Verified each one of the js files, in order to beautify code. 
+> * Considered using Swagger for the API docs, but decided not to. 
+> * App should be completed by now, all the models were created with all their functionality.
+
