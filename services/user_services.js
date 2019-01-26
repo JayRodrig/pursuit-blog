@@ -22,7 +22,7 @@ UserServices.updateUser = (username, email, password, user_id) => db.none(
 );
 
 UserServices.deleteUser = (user_id) => db.none(
-    'DELETE FROM users WHERE users.id = ${user_id}', {user_id,}
+    'DELETE FROM posts WHERE author=${user_id}; DELETE FROM comments WHERE author=${user_id}; DELETE FROM users WHERE id=${user_id};', {user_id,}
 );
 
 UserServices.readPosts = (user_id) => db.any(

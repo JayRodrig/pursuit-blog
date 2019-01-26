@@ -22,7 +22,8 @@ PostServices.updatePost = (post_id, title, body) => db.none(
 );
 
 PostServices.deletePost = (post_id) => db.none(
-    'DELETE FROM posts WHERE id = ${post_id}', {post_id,}
+    'DELETE FROM comments WHERE post_id = ${post_id}; DELETE FROM posts WHERE id = ${post_id}', {post_id,}
+    // DELETE FROM posts WHERE author=${id};DELETE FROM comments WHERE author=${id}; DELETE FROM users WHERE id=${id};
 );
 
 module.exports = PostServices;
