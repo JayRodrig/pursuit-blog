@@ -2,7 +2,7 @@ const PublicPostRouter = require('express').Router();
 const PostServices = require('../services/post_services');
 
 PublicPostRouter.get('/:post_id', (request, response) => {
-    const {post_id} = request.params;
+    const {post_id,} = request.params;
     PostServices.readPost(post_id)
         .then(data => {
             response.json(data);
@@ -15,7 +15,7 @@ PublicPostRouter.get('/:post_id', (request, response) => {
 });
 
 PublicPostRouter.get('/:post_id/comments', (request, response) => {
-    const {post_id} = request.params;
+    const {post_id,} = request.params;
     PostServices.readPostComments(post_id)
         .then(data => {
             response.json(data);

@@ -1,9 +1,12 @@
+// ----- DEPENDENCIES
 const PrivatePostRouter = require('express').Router();
 const PostServices = require('../services/post_services');
-const {checkForToken} = require('../services/user_services');
+const {checkForToken,} = require('../services/user_services');
 
+// ----- MIDDLEWARE
 PrivatePostRouter.use(checkForToken);
 
+// ----- EXPRESS ROUTE CALLBACKS
 PrivatePostRouter.post('/', (request, response) => {
     const {author, title, body,} = request.body;
     PostServices.createPost(author, title, body)
@@ -38,7 +41,7 @@ PrivatePostRouter.put('/:post_id', (request, response) => {
 });
 
 PrivatePostRouter.delete('/:post_id', (request, response) => {
-    const {post_id} = request.params;
+    const {post_id,} = request.params;
     PostServices.deletePost(post_id)
         .then(() => {
             console.log(`User's post has been deleted.`);

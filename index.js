@@ -4,11 +4,11 @@ const bodyParser = require('body-parser');
 
 // ----- ROUTER MODULES
 const PublicUserRouter = require('./routes/public_user');
+const PrivateUserRouter = require('./routes/private_user');
 const PublicPostRouter = require('./routes/public_post');
+const PrivatePostRouter = require('./routes/private_post');
 const PublicCommentRouter = require('./routes/public_comment');
 const PrivateCommentRouter = require('./routes/private_comment');
-const PrivateUserRouter = require('./routes/private_user');
-const PrivatePostRouter = require('./routes/private_post');
 
 // ----- GLOBAL VARIABLES
 const port = 11235;

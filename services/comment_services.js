@@ -10,11 +10,11 @@ CommentServices.readComment = comment_id => db.one(
 );
 
 CommentServices.updateComment = (comment_id, title, body) => db.none(
-    'UPDATE comments SET title = ${title}, body = ${body} WHERE id = ${comment_id}', {comment_id, title, body}
+    'UPDATE comments SET title = ${title}, body = ${body} WHERE id = ${comment_id}', {comment_id, title, body,}
 );
 
 CommentServices.deleteComment = comment_id => db.none(
-    'DELETE FROM comments WHERE id = ${comment_id}', {comment_id}
-)
+    'DELETE FROM comments WHERE id = ${comment_id}', {comment_id,}
+);
 
 module.exports = CommentServices;
