@@ -4,16 +4,14 @@ ___
 
 ## App structure will consist of:
 
-* `./routes/public`
-  *  This PATH will hold all of the express route functions that are _public_.
-* `./routes/private`
-  * This PATH will hold all of the express route functions that are _private_.
-* `./services/crud`
-  * This PATH will try to condense all of the CRUD services for all `http requests` within one `js file` called `crud.js`.
+* `./routes/public_user – public_post – public_comment`
+  *  These PATHs will hold all of the express route functions that are _public_ for all 3 models.
+* `./routes/private_user – private_post – private_comment`
+  * These PATHs will hold all of the express route functions that are _private_ for all 3 models.
+* `./services/user_services – post_services – comment_services`
+  * These PATHs will try to condense all of the CRUD services for all `http requests` made for all 3 models.
 * `./db/database`
   * This PATH will have the `pg promise` allowed in it so we can require it on the rest of the files and do the database manipulation.
-* `./docs/api_docs`
-  * This PATH will implement `swagger` to automatically generate a page explaining how the API works.
 
 ## Technologies to use:
 
@@ -21,7 +19,8 @@ ___
 * PostgreSQL: database of the application
 * Body Parser: module to allow the server to interact with `request.body`
 * PG-Promise: module to allow the server manipulate the database
-* Swagger: module to auto-generate docs for the api
+* Bcrypt: module to encrypt user's passwords.
+* Uuid: module to generate user's tokens once they log in. 
 
 ___
 
