@@ -7,7 +7,7 @@ const UserServices = require('../services/user_services');
 PrivateUserRouter.use(UserServices.checkForToken);
 
 // ----- EXPRESS ROUTER CALLBACKS
-PrivateUserRouter.put('/:user_id', (request, response) => {
+PrivateUserRouter.put('/:user_id', UserServices.isCorrectUser, (request, response) => {
     const {username, email, password,} = request.body;
     const {user_id,} = request.params;
     bcrypt.hash(password, 10)
@@ -27,7 +27,7 @@ PrivateUserRouter.put('/:user_id', (request, response) => {
 
 });
 
-PrivateUserRouter.delete('/:user_id', (request, response) => {
+PrivateUserRouter.delete('/:user_id', UserServices.isCorrectUser, (request, response) => {
     const {user_id,} = request.params;
     UserServices.deleteUser(user_id)
         .then(() => {

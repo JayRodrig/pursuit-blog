@@ -41,6 +41,9 @@ UserServices.readComment = (user_id, comment_id) => db.one(
     'SELECT users.username, comments.title, comments.body FROM users JOIN comments ON users.id = comments.author WHERE author = ${user_id} AND comments.id = ${comment_id}', {user_id, comment_id,}
 );
 
+UserServices.getUserByUsername = username => db.one(
+    'SELECT * FROM users WHERE username = ${username}', {username,}
+);
 
 UserServices.insertToken = (token, username) => db.none(
     'UPDATE users SET token = ${token} WHERE username = ${username}', {token, username,}
@@ -53,6 +56,20 @@ UserServices.checkForToken = (request, response, next) => {
         });
     }
     next();
+}
+
+UserServices.isCorrectUser = (request, response, next) => {
+    const {user_id} = request.params;
+    const {token} = request.headers;
+    UserServices.readUser(user_id)
+        .then(data => {
+            if (token === data.token) next();
+            else {
+                response.json({
+                    'msg': `You haven't loged in yet.`,
+                });
+            }
+        });
 }
 
 module.exports = UserServices;
